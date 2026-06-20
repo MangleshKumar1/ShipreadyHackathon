@@ -1,0 +1,559 @@
+MVP SUCCESS CRITERIA
+
+The project is complete when:
+
+1. User can paste feedback.
+2. Claude extracts themes.
+3. Claude returns opportunity scores.
+4. User sees Build / Plan Later / Low Signal decisions.
+5. User can generate an evidence-backed PRD.
+6. Novus tracks all critical events.
+7. Project is deployed on Vercel.
+8. Demo video can be recorded without any manual editing.
+9. Entire workflow completes in under 60 seconds.
+10. No login required.
+
+
+================================================================================
+  SHIPREADY — FINAL BUILD PLAN
+  World Product Day Hackathon 2026 | Deadline: June 20, 5 PM BST (9:30 PM IST)
+================================================================================
+
+PRODUCT NAME:   ShipReady
+TAGLINE:        Turn customer noise into evidence-backed product decisions — in 60 seconds
+POSITIONING:    Decision System, NOT "AI tool" or "PRD generator"
+URL TARGET:     shipready.vercel.app
+
+--------------------------------------------------------------------------------
+WHY THIS WINS
+--------------------------------------------------------------------------------
+
+Judging criteria (all equally weighted at 25%):
+
+  Product Thinking (25%)
+    → Solving real PM workflow pain: feedback → priority → spec
+    → Judges ARE PMs. They feel this pain daily.
+    → Score estimate: 9.5/10
+
+  Craft & Execution (25%)
+    → 5 screens only. Clean. Polishable.
+    → Evidence-backed output = trustworthy, not hallucinated
+    → Score estimate: 9/10
+
+  Originality (25%)
+    → Not a chatbot. Not a note-taker. Not a summarizer.
+    → A DECISION SYSTEM with explicit Build/Delay/Ignore
+    → Score estimate: 9/10
+
+  Shippedness (25%)
+    → Stranger lands on URL, pastes feedback, gets PRD in 60 sec
+    → Novus tracking full funnel (7 events)
+    → Score estimate: 10/10
+
+--------------------------------------------------------------------------------
+TECH STACK (FINAL — DO NOT CHANGE)
+--------------------------------------------------------------------------------
+
+  Layer         Tool                  Why
+  ──────────────────────────────────────────────────────────────────
+  Frontend   →  Next.js 15            Frontend + backend API routes in ONE project
+  Styling    →  Tailwind + shadcn/ui  Fast, professional, consistent
+  AI         →  Claude API            Best structured JSON output + PRDs
+                claude-sonnet-4-6     (model ID: claude-sonnet-4-6)
+  Database   →  Supabase (OPTIONAL)   Save analyses — build LAST only if time permits
+  Deploy     →  Vercel                Free, 2-minute deploy
+  Analytics  →  Novus.ai             REQUIRED for submission eligibility
+
+  Build with Claude Code → generates entire Next.js project locally → deploy to Vercel via GitHub.
+
+--------------------------------------------------------------------------------
+PROJECT STRUCTURE (NEXT.JS — CLAUDE CODE WILL CREATE THIS)
+--------------------------------------------------------------------------------
+
+  shipready/
+  ├── app/
+  │   ├── page.tsx              ← Landing screen
+  │   ├── analyze/
+  │   │   └── page.tsx          ← Input screen (Step 1)
+  │   ├── insights/
+  │   │   └── page.tsx          ← Insights dashboard (Step 2)
+  │   ├── decision/
+  │   │   └── page.tsx          ← Decision view (Step 2.5)
+  │   ├── spec/
+  │   │   └── page.tsx          ← PRD output (Step 3)
+  │   └── api/
+  │       ├── analyze/
+  │       │   └── route.ts      ← Claude Calls 1+2 (themes + decision combined)
+  │       └── prd/
+  │           └── route.ts      ← Claude Call 3 (PRD generation)
+  ├── components/
+  │   ├── ThemeCard.tsx
+  │   ├── DecisionCard.tsx
+  │   └── PRDView.tsx
+  ├── .env.local                ← ANTHROPIC_API_KEY here locally
+  ├── .env.example              ← commit this (without real key)
+  └── package.json
+
+  IMPORTANT: .env.local must be in .gitignore
+  ANTHROPIC_API_KEY goes in Vercel Environment Variables
+
+--------------------------------------------------------------------------------
+5 SCREENS — WHAT TO BUILD (NO MORE, NO LESS)
+--------------------------------------------------------------------------------
+
+SCREEN 1: LANDING PAGE
+  ┌──────────────────────────────────────────────────────┐
+  │  ◉ ShipReady                                         │
+  │                                                      │
+  │  Turn customer feedback into                         │
+  │  evidence-backed product decisions.                  │
+  │                                                      │
+  │  Not summaries. Not sentiment.                       │
+  │  Actual decisions. With proof.                       │
+  │                                                      │
+  │  [Paste feedback → Get decision → Ship]              │
+  │                                                      │
+  │  [Analyze My Feedback →]    [See Example]            │
+  └──────────────────────────────────────────────────────┘
+
+SCREEN 2: INPUT PAGE (Step 1 of 3)
+  - Large textarea: "Paste anything: G2 reviews, Slack, tickets, interviews..."
+  - Optional text field: "What's your product? (B2B SaaS for X teams...)"
+  - CTA: [Analyze Feedback →]
+
+SCREEN 3: INSIGHTS DASHBOARD ⭐ THE WOW SCREEN (Step 2 of 3)
+  - Header: "Analyzed 31 feedback items • Found 4 themes"
+  - Theme cards (ranked by opportunity score):
+      #1 theme: Name + Score + Progress bar + "HIGH OPPORTUNITY" badge
+      📌 Evidence quotes with mention counts
+      Frequency / Impact / Effort tags
+      [→ Generate Spec for this] button
+  - Bottom section: "Low Signal (Don't build now):" list
+
+SCREEN 4: DECISION VIEW ⭐ THE DIFFERENTIATOR (Step 2.5)
+  - Header: "Based on X signals, here's what to do:"
+  - Four decision cards:
+      ✅ BUILD NOW   — top theme + why + proof count
+      ⏳ PLAN LATER  — theme + reason
+      ⚡ QUICK WIN   — theme + effort note
+      ❌ LOW SIGNAL  — theme + reason
+  - CTA: [Generate Spec for #1 →]
+
+SCREEN 5: EVIDENCE-BACKED PRD ⭐ THE MONEY SCREEN (Step 3 of 3)
+  - Header: Feature name + [Copy] [Save] [PDF] buttons
+  - Sections:
+      Problem Statement (with source count)
+      Target User
+      User Stories — EACH with 📌 Evidence quote + count
+      Success Metrics
+      Edge Cases
+      Risks
+      Acceptance Criteria
+      Footer: "Generated from: X tickets • Y reviews • Z notes"
+
+--------------------------------------------------------------------------------
+WHAT TO REMOVE (DO NOT BUILD THESE)
+--------------------------------------------------------------------------------
+
+  ❌ Roadmap Timeline Screen — bloat, distraction, not core value
+  ❌ File/CSV upload — scope creep, paste text is enough
+  ❌ User auth/login screen — not needed for hackathon
+  ❌ Multi-project dashboard — not needed
+
+--------------------------------------------------------------------------------
+CLAUDE API — 2 ROUTES, 3 PROMPTS (EXACT PROMPTS)
+--------------------------------------------------------------------------------
+
+  /api/analyze  → runs Prompt 1 then Prompt 2 sequentially, returns both
+  /api/prd      → runs Prompt 3, returns PRD
+
+PROMPT 1 (inside /api/analyze): Theme Discovery + Evidence
+──────────────────────────────────────────────────────────
+
+const clusterPrompt = `
+You are a senior PM analyzing customer feedback.
+
+Product: ${context}
+Feedback: ${rawInput}
+
+Return ONLY valid JSON (no markdown, no explanation):
+{
+  "total_analyzed": 31,
+  "themes": [
+    {
+      "rank": 1,
+      "name": "Onboarding Friction",
+      "opportunity_score": 9.2,
+      "frequency": 25,
+      "sentiment": "negative",
+      "impact": "high",
+      "effort": "low",
+      "is_quick_win": false,
+      "evidence": [
+        { "quote": "Takes forever to set up", "count": 12 },
+        { "quote": "I gave up twice", "count": 8 },
+        { "quote": "First time was confusing", "count": 5 }
+      ]
+    }
+  ],
+  "quick_wins": ["CSV Export"],
+  "ignore_now": ["Social Login"],
+  "executive_summary": "2 sentences max"
+}
+Opportunity Score = (Frequency × Impact) / Effort. Scale 1-10.
+`;
+
+Model: claude-sonnet-4-6
+Max tokens: 2000
+
+
+PROMPT 2 (inside /api/analyze): Decision Layer
+───────────────────────────────────────────────
+
+const decisionPrompt = `
+You are a PM making explicit build vs delay vs ignore decisions.
+
+Themes: ${JSON.stringify(themes)}
+Product Context: ${context}
+
+Return ONLY valid JSON:
+{
+  "build_now": {
+    "theme": "Onboarding Friction",
+    "reasoning": "Highest frequency + frustration + fastest to ship",
+    "evidence_strength": "25 of 31 users mentioned this"
+  },
+  "plan_later": [
+    { "theme": "Mobile Performance", "reason": "High effort, plan Q4" }
+  ],
+  "quick_wins": [
+    { "theme": "CSV Export", "reason": "Low effort, closes 8 tickets" }
+  ],
+  "ignore": [
+    { "theme": "Social Login", "reason": "Low frequency, high effort" }
+  ]
+}
+`;
+
+Model: claude-sonnet-4-6
+Max tokens: 1000
+
+
+PROMPT 3 (inside /api/prd): Evidence-Backed PRD
+────────────────────────────────────────────────
+
+const prdPrompt = `
+You are a senior PM writing a PRD.
+Every user story MUST include evidence from actual customer quotes.
+
+Feature: ${selectedTheme.name}
+Evidence: ${JSON.stringify(selectedTheme.evidence)}
+Product: ${context}
+
+Return ONLY valid JSON:
+{
+  "title": "Onboarding Friction Fix",
+  "problem_statement": "...",
+  "target_user": "...",
+  "user_stories": [
+    {
+      "story": "As a new user, I want guided setup steps...",
+      "evidence_quote": "Takes forever to set up",
+      "evidence_count": 12
+    }
+  ],
+  "success_metrics": ["Onboarding completion: 40% → 80%"],
+  "edge_cases": ["User exits mid-flow → save progress"],
+  "risks": ["Oversimplifying may frustrate power users"],
+  "acceptance_criteria": ["User completes setup in < 5 steps"],
+  "out_of_scope": ["Mobile onboarding"],
+  "sources_summary": "25 tickets, 14 reviews, 9 interviews"
+}
+`;
+
+Model: claude-sonnet-4-6
+Max tokens: 3000
+
+--------------------------------------------------------------------------------
+SUPABASE SETUP (30 MIN — DO AFTER UI IS WORKING)
+--------------------------------------------------------------------------------
+
+Table: analyses
+  id          uuid (primary key)
+  created_at  timestamp
+  feedback    text
+  context     text
+  themes      jsonb
+  decision    jsonb
+  prd         jsonb
+
+Table: saved_prds
+  id          uuid (primary key)
+  analysis_id uuid (foreign key)
+  theme_name  text
+  prd_content jsonb
+  created_at  timestamp
+
+Purpose: When judge asks "Can I save this?" → YES.
+         When judge asks "Can I revisit?" → YES.
+
+--------------------------------------------------------------------------------
+NOVUS.AI — 7 EVENTS TO TRACK (JUDGES WILL CHECK THIS)
+--------------------------------------------------------------------------------
+
+Install: npm install @novus/analytics (check novus.ai docs for exact package)
+Register at: https://novus.pendo.io/register
+
+Track these events in this order:
+
+  // 1. App loaded
+  novus.track('session_started')
+
+  // 2. User submits feedback
+  novus.track('feedback_submitted', {
+    char_count: input.length,
+    has_context: !!context
+  })
+
+  // 3. Analysis done (after /api/analyze resolves)
+  novus.track('analysis_complete', {
+    themes_found: themes.length,
+    top_score: themes[0].opportunity_score,
+    top_theme: themes[0].name
+  })
+
+  // 4. User clicks on a theme card
+  novus.track('theme_clicked', {
+    theme_name: theme.name,
+    rank: theme.rank,
+    score: theme.opportunity_score
+  })
+
+  // 5. Decision screen viewed (also from /api/analyze response)
+  novus.track('decision_viewed', {
+    build_now: decision.build_now.theme
+  })
+
+  // 6. PRD generated (after Call 3)
+  novus.track('prd_generated', {
+    theme: selectedTheme.name,
+    stories_count: prd.user_stories.length,
+    has_evidence: true
+  })
+
+  // 7. User exports PRD
+  novus.track('prd_exported', {
+    format: 'copy'  // or 'pdf' or 'saved'
+  })
+
+What judges see in Novus dashboard:
+  → Full funnel from input to PRD
+  → Where users drop off
+  → Most clicked theme
+  → Export rate
+
+--------------------------------------------------------------------------------
+BUILD TIMELINE (TODAY — DEADLINE 9:30 PM IST)
+--------------------------------------------------------------------------------
+
+  PHASE               TIME        TASK
+  ────────────────────────────────────────────────────────────────────
+  NOW                 START       Open Claude Code terminal
+  +30 min             T+0:30      Full Next.js project scaffolded by Claude Code
+  +1.5 hrs            T+1:30      /api/analyze working (Themes + Decision combined)
+  +2.5 hrs            T+2:30      /api/prd working (PRD with evidence)
+  +3.0 hrs            T+3:00      All screens wired up end-to-end
+  +4.0 hrs            T+4:00      Novus installed, 7 events firing
+  +4.5 hrs            T+4:30      Push to GitHub
+  +5.0 hrs            T+5:00      Deploy to Vercel, add env variables
+  +5.5 hrs            T+5:30      Test live URL with real feedback data
+  +6.0 hrs            T+6:00      Supabase (ONLY if time permits)
+  +6.5 hrs            T+6:30      Record YouTube video (90 seconds)
+  +7.0 hrs            T+7:00      Fill Devpost form
+  +7.5 hrs            T+7:30      SUBMIT ✅
+
+--------------------------------------------------------------------------------
+CLAUDE CODE PROMPT (PASTE THIS IN CLAUDE CODE TERMINAL FIRST)
+--------------------------------------------------------------------------------
+
+Create a complete Next.js 15 project called "shipready" with:
+
+Tech: Next.js 15 App Router, TypeScript, Tailwind CSS, shadcn/ui
+
+FOLDER STRUCTURE:
+- app/page.tsx (Landing page)
+- app/analyze/page.tsx (Input page)
+- app/insights/page.tsx (Insights dashboard)
+- app/decision/page.tsx (Decision view)
+- app/spec/page.tsx (PRD output)
+- app/api/analyze/route.ts (Claude API Calls 1+2 — themes + decision combined)
+- app/api/prd/route.ts (Claude API Call 3 — PRD generation)
+- components/ThemeCard.tsx
+- components/DecisionCard.tsx
+- components/PRDView.tsx
+- .env.local (with ANTHROPIC_API_KEY=your_key_here)
+- .gitignore (must include .env.local)
+
+API ROUTES (server-side only, use process.env.ANTHROPIC_API_KEY):
+Each route.ts should call Claude API claude-sonnet-4-6 model.
+Use @anthropic-ai/sdk package.
+Return JSON responses.
+
+UI: Clean, minimal, light mode, professional SaaS.
+Use shadcn/ui Card, Button, Badge, Progress components.
+State management: Pass data between pages via
+localStorage (feedback → insights → decision → spec flow).
+
+Build all 5 screens with placeholder data first,
+then wire up API routes.
+
+--------------------------------------------------------------------------------
+SAMPLE TEST DATA (USE THIS TO TEST YOUR APP)
+--------------------------------------------------------------------------------
+
+Paste this as feedback input to test:
+
+"The onboarding takes forever, I gave up twice before completing setup" - G2 Review
+"Mobile app crashes every time I switch between projects" - Support ticket #4521
+"PLEASE add CSV export, I've asked 3 times" - Slack #feedback
+"Love the product but my whole team is on mobile and it's unusable" - Customer interview
+"Onboarding video helped but the actual steps are confusing" - NPS response
+"Why can't I export my data? This is basic functionality" - Twitter DM
+"Setup took me 2 full days, my team nearly quit" - Support ticket #4891
+"First time user experience is terrible, I almost churned" - G2 Review
+"The mobile app is so laggy it's basically unusable" - App Store review
+"I need to export to CSV for my stakeholder reports" - Intercom chat
+
+Product context: "B2B project management tool for engineering teams, 10-100 person companies"
+
+--------------------------------------------------------------------------------
+DEVPOST SUBMISSION DESCRIPTION (COPY-PASTE READY)
+--------------------------------------------------------------------------------
+
+WHAT I BUILT:
+ShipReady turns messy customer feedback into evidence-backed product decisions
+and engineering-ready specs in under 60 seconds.
+
+THE PROBLEM:
+PMs spend hours reading feedback, guessing at priorities, and writing PRDs from
+memory. The result: roadmaps based on the loudest voice, not the real signal.
+
+HOW IT WORKS:
+1. Paste any feedback (G2 reviews, Slack, tickets, interviews — anything)
+2. AI clusters themes with opportunity scores backed by actual customer quotes
+3. AI makes explicit BUILD / DELAY / IGNORE decisions with proof
+4. One click generates an evidence-backed PRD where every user story links
+   to actual customer quotes
+
+THE DIFFERENTIATOR:
+Not summaries. Not sentiment. Actual decisions with proof.
+Every recommendation is traceable to real customer words.
+
+BUILT WITH:
+Next.js 15 + Tailwind + shadcn/ui + Claude API (claude-sonnet-4-6) + Vercel + Novus.ai
+
+WHO IT'S FOR:
+PMs, founders, and product teams who are drowning in feedback but starving
+for decisions.
+
+--------------------------------------------------------------------------------
+90-SECOND DEMO SCRIPT (RECORD — UPLOAD TO YOUTUBE)
+--------------------------------------------------------------------------------
+
+0:00-0:08  SPEAK: "PMs read hundreds of feedback items. Still don't know what
+            to build. ShipReady fixes that."
+
+0:08-0:20  ACTION: Paste real Notion G2 reviews into the input field
+
+0:20-0:40  ACTION: Show insights dashboard loading
+            SPEAK: "Notice — every score is backed by actual customer quotes"
+
+0:40-0:55  ACTION: Show decision view
+            SPEAK: "This is the moment PMs usually spend a week reaching"
+
+0:55-1:15  ACTION: Click Generate Spec, show PRD with evidence links
+            SPEAK: "Every user story cites the customers who asked for it"
+
+1:15-1:25  ACTION: Show Novus.ai dashboard
+            SPEAK: "We can already see where PMs spend the most time"
+
+1:25-1:30  ACTION: Show URL shipready.vercel.app
+            SPEAK: "Try it yourself. Right now."
+
+--------------------------------------------------------------------------------
+SUBMISSION CHECKLIST
+--------------------------------------------------------------------------------
+
+  [ ] App deployed at public URL (Vercel)
+  [ ] Novus.ai installed + 7 events firing
+  [ ] Screenshot of Novus dashboard taken
+  [ ] Demo video recorded (90 sec, upload to YouTube or Vimeo ONLY — Loom not accepted per rules)
+  [ ] Devpost account created
+  [ ] Submission form filled (URL + video + description + Novus screenshot)
+  [ ] Submitted before 5:00 PM BST / 9:30 PM IST on June 20, 2026
+
+--------------------------------------------------------------------------------
+JUDGE RUBRIC ALIGNMENT
+--------------------------------------------------------------------------------
+
+  Product Thinking (25%)
+    ✓ Solves real PM workflow (feedback → decision → spec)
+    ✓ Clear who it's for (PMs, founders, product teams)
+    ✓ Evidence traceability = judges trust AI output
+
+  Craft & Execution (25%)
+    ✓ 5 screens max = polishable
+    ✓ Evidence-backed output = professional quality
+    ✓ shadcn/ui = consistent, clean components
+
+  Originality & Ambition (25%)
+    ✓ Not a chatbot, not a summarizer
+    ✓ "Decision System" = strategic positioning
+    ✓ BUILD/DELAY/IGNORE framework = memorable
+
+  Shippedness (25%)
+    ✓ Stranger can use it in 60 seconds
+    ✓ Novus tracking full funnel (7 events)
+    ✓ Novus full funnel = measurable product
+
+--------------------------------------------------------------------------------
+ANTHROPIC API KEY SETUP
+--------------------------------------------------------------------------------
+
+  1. Go to console.anthropic.com
+  2. Create API key
+  3. In Vercel: Settings → Environment Variables → ANTHROPIC_API_KEY
+  4. In code: process.env.ANTHROPIC_API_KEY
+  5. Use server-side API routes (Next.js /api/) — do NOT expose key in frontend
+
+--------------------------------------------------------------------------------
+CRITICAL REMINDERS
+--------------------------------------------------------------------------------
+
+  → PRODUCT NAME: ShipReady everywhere
+    (Devpost, URL, code, demo video)
+
+  → TOOL: Use Claude Code — NOT Bolt.new
+
+  → BACKEND: Claude API calls go in /app/api/ routes ONLY
+    NEVER call Claude API from frontend components
+
+  → API KEY: ANTHROPIC_API_KEY in .env.local locally
+    Add to Vercel Environment Variables before deploy
+    Add .env.local to .gitignore — NEVER commit key
+
+  → SUPABASE: Optional — build LAST if time permits
+    Remove [Save] button if Supabase not implemented
+
+  → DEMO VIDEO: YouTube or Vimeo ONLY
+    Loom is NOT accepted per hackathon rules
+    Record locally → upload to YouTube (unlisted is fine)
+
+  → DO NOT build roadmap timeline screen
+  → DO NOT skip Novus (project INELIGIBLE without it)
+  → DO test with sample data before recording video
+  → SUBMIT before 9:30 PM IST (5:00 PM BST) tonight
+
+================================================================================
+  YOU HAVE EVERYTHING YOU NEED. OPEN CLAUDE CODE AND START NOW.
+================================================================================

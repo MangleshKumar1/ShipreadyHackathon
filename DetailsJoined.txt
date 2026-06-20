@@ -1,0 +1,66 @@
+About the challenge
+World Product Day is our annual global celebration of the craft, community, and impact of product people, and this year, we're doing something different. Instead of just talking about shipping, we want to see you ship.
+
+Mind the Product is the world's largest community of product professionals, and for over a decade we've championed the idea that great products come from people who are relentlessly curious, resourceful, and willing to build. With AI tooling collapsing the distance between "I have an idea" and "I shipped it," there has never been a better moment for our community to put that belief into practice.
+
+We're partnering with our friends over at Novus.ai to bring this challenge to you. Novus.ai gives you instant insight into how real users interact with what you've built, so you're not just shipping into the void. They're sponsoring World Product Day because they believe more people should be shipping, and shipping with real feedback from day one.
+
+Everyone Ships Now is exactly what it sounds like. You don't need to be an engineer. You don't need a team. You don't need permission. You just need an idea and roughly a month. We'll bring the community, the stage, and the prizes — you bring the thing you've been meaning to build.
+
+To be eligible for challenge prizes, your project must:
+
+Be new. Work on it must begin on or after May 20. No dusting off last year's side project.
+Be built with the tool of your choice. Bolt, Lovable, Replit, Cursor, Claude, v0, Figma Make, hand-rolled Next.js — whatever gets you to shipped fastest. We're tool-agnostic.
+Install Novus.ai before submission. Novus is how you (and we) measure what you've built. Any project submitted without Novus installed is ineligible for prizes.
+That's it. No themes, no required APIs, no mandatory integrations beyond Novus. Build what you actually want to build.
+
+Get started
+Here's the fastest path from "I'm in" to "I'm building":
+
+Register on this page to lock in your spot and get access to updates.
+Pick your idea. That thing you've been sketching in the back of a notebook counts. So does the internal tool your team keeps asking for. So does the silly app you think nobody will use.
+Pick your tool. Use whatever you're fastest in. If you've never shipped before, try one of the AI builders (Bolt, Lovable, Replit Agent, v0) — they're designed for exactly this moment.
+Build in public, if you can. Post progress with #EveryoneShipsNow and tag @MindThePRoduct. Community momentum is half the fun.
+Install Novus.ai on your project so you can see how users are interacting with what you built.
+Submit by June 20, 5:00 PM GMT.
+Stuck on what to build? Our friends at Vennie.ai can help you go from fuzzy idea to defined scope in minutes.
+
+Requirements
+What to Build
+Anything. Seriously.
+
+Build that tool you've complained doesn't exist. Build the app version of your spreadsheet. Build the thing your team keeps almost-shipping but never finishes. Build a game. Build a goofy weekend toy. Build a B2B SaaS you think could be a real business. Build the thing you'd be embarrassed to tell people about, and then tell people about it anyway.
+
+The only soft guidance we'll offer: make it something a real person could use. Not a demo video, not a pitch deck, not a prototype with five broken buttons — a working product, however small, that someone could land on and actually do something with.
+
+If it helps, here are some directions other product people in our community have talked about building:
+
+Internal tools that unblock a real workflow at your company
+Consumer apps that solve a very specific, very personal itch
+Playful experiments that show off what AI can do now
+"I wish this existed" utilities for other product managers, designers, or engineers
+Micro-SaaS products you'd actually pay $5/month for
+You don't have to justify the idea. If you want to build it, it qualifies.
+
+What to Submit
+To count, your submission must include:
+
+A public URL to a NEW working, deployed version of your project that you started during this hackathon period. No "clone the repo and run locally" — judges and the community need to be able to click a link and use it right now.
+A short demo video (2–3 minutes) showing your project in action. Upload to YouTube, Vimeo, or Loom and make it public or unlisted.
+Confirmation that Novus.ai is installed on the project via a screenshot of your Novus dashboard.
+A short written description covering what you built, who it's for, what tool(s) you used, and what you learned shipping it.
+Optional but encouraged: a link to your LinkedIn posts that tag @Mind the Product on LinkedIn or @mindtheproduct on Instagram, a blog post you wrote, or anything else that shows the journey you have taken to build your project.
+Prizes
+$10,000+ in prizes+ other prizes
+GOLD
+$5,000 in cash
+1 winner
+SILVER
+$3,000 in cash
+1 winner
+BRONZE
+$2,000 in cash
+1 winner
+Product Bundle by Mind the Product
+10 winners
+Access to our Product Bundle, with free access to the latest & greatest AI tools, worth up to $2,000USD in value.

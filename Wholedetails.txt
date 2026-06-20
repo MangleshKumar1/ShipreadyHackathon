@@ -1,0 +1,28 @@
+Mind the Product presents World Product Day: Everyone Ships Now
+World Product Day 2026: 30 days, one community, and the AI tools to finally build the thing. PMs, designers, engineers, the curious... welcome!
+oner 1300 participants:-
+
+rules:-
+main deatils:-
+
+
+Tools and Technologies
+Use whatever you want. Genuinely.
+This hackathon is deliberately tool-agnostic because we think the most interesting story of the year is how many different ways product people now get things shipped. Some directions to consider:
+
+* AI app builders: Bolt.new, Lovable, Replit Agent, v0, Figma Make, Claude Artifacts
+* AI coding assistants: Cursor, Windsurf, Claude Code, GitHub Copilot
+* Traditional stacks: Next.js, SvelteKit, Rails, Django, FastAPI — anything you're already fast in
+* Mobile: Expo, React Native, Flutter, native iOS/Android
+* No-code / low-code: Softr, Glide, Bubble, Retool, Airtable
+* Backends & infra: Supabase, Firebase, Neon, Vercel, Netlify, Cloudflare
+* AI APIs: Anthropic, OpenAI, Google AI Studio, ElevenLabs, Replicate
+The one required piece of tech in your stack: [Novus.ai](https://novus.ai/), installed on your deployed project before submission. Novus gives you — and the judges — visibility into how people are actually using what you built. If you've never instrumented a product before, this is a good time to start.
+Additional Resource links
+
+* [Novus.ai](https://novus.ai/) — Required product analytics tool for your submission. Install docs, SDKs, and integration guides.
+* [Mind the Product](https://mindtheproduct.com/) — The global community behind the challenge. Articles, events, and the ProductTank network.
+   * [Vennie.ai](https://vennie.ai/) — AI product assistant to help you scope, plan, and sharpen your idea before you build.
+Contact Us & Support Channels
+Questions about the hackathon, your submission, or anything else? Email [hello@mindtheproduct.com](mailto:hello@mindtheproduct.com) and a human on our team will get back to you.
+For real-time discussion, join us over at the [Mind the Product Slack](https://join.slack.com/t/mindtheproduct/shared_invite/zt-3wthrkhd2-20y5uaG5rIQnSoplHwSk5w) on [#wpd-26-hackathon](https://mindtheproduct.slack.com/archives/C0B0MNTNQ7R)

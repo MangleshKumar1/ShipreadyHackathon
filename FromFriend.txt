@@ -1,0 +1,1203 @@
+i got this from friend:-
+I think you're one iteration away from a potentially winning concept, but I would make one critical change.
+Don't position it as "Feature Request Prioritizer"
+Don't position it as:
+ShipReady: Feature Request Prioritizer + PRD Generator
+Because judges may think:
+"Nice GPT workflow."
+Instead position it as:
+Feedback → Decision → Spec
+or
+Product Intelligence Engine
+or
+Voice of Customer → Roadmap
+The value is not the PRD.
+The value is not the prioritization.
+
+
+The value is:
+Turning messy customer signals into build-ready product decisions.
+That's much more strategic.
+
+What I'd actually remove
+I would remove:
+❌ Roadmap View Screen
+Why?
+Because roadmap generation is a byproduct.
+Your core story should be:
+
+```
+
+```
+
+
+```
+Feedback
+↓
+Theme Discovery
+↓
+Opportunity Scoring
+↓
+Evidence-backed Recommendation
+↓
+PRD
+```
+
+That's already enough.
+Adding extra screens can make the product feel bloated.
+
+What I'd add instead
+This is the feature that could move you from top 10% to top 1%.
+Evidence Traceability
+Every recommendation should answer:
+Why did AI suggest this?
+Example:
+Theme
+Onboarding Speed
+Opportunity Score: 9.2
+Evidence:
+"Takes forever to set up"
+12 mentions
+"I gave up twice"
+8 mentions
+"Confusing first-time setup"
+5 mentions
+Generated from:
+
+* 25 support tickets
+* 14 reviews
+* 9 interviews
+Then:
+Generated User Story
+As a new customer, I want a guided onboarding flow...
+Evidence Source:
+Linked to actual customer quotes.
+This is HUGE.
+Because judges are PMs.
+PMs hate AI hallucinations.
+Evidence-backed decisions feel trustworthy.
+Revised Flow
+
+This is the flow I'd actually ship.
+Screen 1
+Landing
+Screen 2
+Paste Feedback
+Sources:
+
+* G2 reviews
+* Slack
+* Support tickets
+* Interviews
+* NPS
+Screen 3
+Insights Dashboard
+Shows:
+Themes
+Frequency
+Sentiment
+Opportunity Score
+Supporting Quotes
+This is the WOW screen.
+Screen 4
+Decision View
+Shows:
+Build
+Onboarding
+Delay
+Social Login
+Ignore
+Dark Mode
+Plus reasoning.
+Screen 5
+Generate Spec
+One click.
+Outputs:
+
+* Problem
+* User Stories
+* Metrics
+* Risks
+* Acceptance Criteria
+Scoring against hackathon rubric
+Product Thinking
+9.5/10
+You're solving a real PM workflow.
+Craft
+9/10
+Only 5 screens.
+Very polishable.
+Originality
+9/10
+Most entries:
+
+* AI assistant
+* AI note taker
+* AI chat app
+You're building a decision system.
+Shippedness
+10/10
+User gets value in under a minute.
+Exactly what judges want.
+Technology Stack I'd use
+Not Bolt-only.
+My stack:
+UI
+
+* Next.js
+* Tailwind
+* shadcn/ui
+AI
+
+* Claude Sonnet
+Database
+
+* Supabase
+Analytics
+
+* Novus.ai
+Deployment
+
+* Vercel
+Reason:
+If judges ask:
+"Can you save analyses?"
+You can.
+"Can users revisit PRDs?"
+You can.
+Supabase adds credibility for very little effort.
+The strongest one-line pitch
+Instead of:
+AI Feature Request Prioritizer
+or
+AI PRD Writer
+Use:
+Turn customer feedback into evidence-backed product decisions and engineering-ready specs in under 60 seconds.
+That's a much stronger story.
+If I were entering this exact hackathon solo, this is the version I'd build. It is specific enough to avoid the "generic AI assistant" trap, directly relevant to product managers, demonstrably useful in a 90-second demo, and maps cleanly to all four judging categories.
+
+
+
+
+and lastly this another friend given me this:-
+Yaar, tere friend ne **bilkul sahi feedback diya hai.** Aur main agree karta hoon. Let me synthesize everything into ONE final decision.
+
+---
+
+## 🎯 Final Verdict: What To Build
+
+### Name: **ProdSignal**
+**Tagline:** *Turn customer noise into evidence-backed product decisions — in 60 seconds*
+
+**Why this name beats ShipReady:**
+- "Ship" = output focused
+- "Signal" = intelligence focused → more strategic, less tool-like
+
+---
+
+## ✅ What Your Friend Got RIGHT (Keep These)
+
+```
+✅ Remove Roadmap screen (bloat hai, distraction hai)
+✅ Evidence Traceability = THE differentiator
+✅ Supabase add karo (save analyses = credibility)
+✅ "Decision System" positioning, not "AI tool"
+✅ 5 screens max
+✅ Evidence linked to every user story
+```
+
+---
+
+## ⚡ The Final Flow (Merged + Improved)
+
+```
+CUSTOMER CHAOS          AI PROCESSING           PM VALUE
+──────────────────────────────────────────────────────────
+G2 reviews              Step 1: Cluster          Themes +
+Slack messages    →     Step 2: Score      →     Evidence +
+Support tickets         Step 3: Decide           Decision +
+NPS responses           Step 4: Spec             PRD
+Interview notes
+
+"What are users saying?"  "What matters most?"  "What to build?"
+```
+
+---
+
+## 🖥️ 5 Screens — Final Version
+
+---
+
+### Screen 1: Landing
+```
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│   ◉ ProdSignal                                         │
+│                                                         │
+│   Turn customer feedback into                           │
+│   evidence-backed product decisions.                    │
+│                                                         │
+│   Not summaries. Not sentiment.                         │
+│   Actual decisions. With proof.                         │
+│                                                         │
+│   ┌─────────────────────────────────────────────┐      │
+│   │  Paste feedback  →  Get decision  →  Ship   │      │
+│   └─────────────────────────────────────────────┘      │
+│                                                         │
+│   [Analyze My Feedback →]    [See Example]             │
+│                                                         │
+│   Used by PMs at ___  ___  ___  (logos placeholder)    │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Screen 2: Input
+```
+┌─────────────────────────────────────────────────────────┐
+│  ← Back                                    Step 1 of 3 │
+│                                                         │
+│  Paste your customer feedback                           │
+│                                                         │
+│  ┌───────────────────────────────────────────────┐     │
+│  │                                               │     │
+│  │  Paste anything here:                         │     │
+│  │  G2 reviews, Slack #feedback, support         │     │
+│  │  tickets, interview notes, NPS responses...   │     │
+│  │                                               │     │
+│  │  The messier the better.                      │     │
+│  │                                               │     │
+│  └───────────────────────────────────────────────┘     │
+│                                                         │
+│  What's your product? (optional but recommended)        │
+│  ┌───────────────────────────────────────────────┐     │
+│  │  e.g. "B2B project management tool for        │     │
+│  │  engineering teams, 10-100 person companies"  │     │
+│  └───────────────────────────────────────────────┘     │
+│                                                         │
+│  [Analyze Feedback →]                                  │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Screen 3: Insights Dashboard ⭐ THE WOW SCREEN
+```
+┌─────────────────────────────────────────────────────────┐
+│  📊 Signal Analysis                        Step 2 of 3 │
+│  Analyzed 31 feedback items • Found 4 themes            │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │ 🔥 #1  Onboarding Friction    Score: 9.2        │   │
+│  │        ████████████████████░  HIGH OPPORTUNITY  │   │
+│  │                                                 │   │
+│  │  📌 Evidence (25 mentions):                     │   │
+│  │  "Takes forever to set up" — 12 users           │   │
+│  │  "I gave up twice" — 8 users                   │   │
+│  │  "First time was confusing" — 5 users           │   │
+│  │                                                 │   │
+│  │  Frequency: High  Impact: High  Effort: Low     │   │
+│  │                                                 │   │
+│  │  [→ Generate Spec for this]                    │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │ #2  Mobile Performance        Score: 8.1        │   │
+│  │     ████████████████░░░░░                       │   │
+│  │  📌 "App crashes on project switch" — 9 users   │   │
+│  │  [→ Generate Spec for this]                    │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │ #3  Data Export               Score: 6.4        │   │
+│  │     ████████████░░░░░░░░░     ⚡ Quick Win       │   │
+│  │  📌 "Need CSV export" — 8 users                 │   │
+│  │  [→ Generate Spec for this]                    │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  🚫 Low Signal (Don't build now):                      │
+│     Social Login • Desktop Redesign • Dark Mode        │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Screen 4: Decision View ⭐ THE DIFFERENTIATOR
+```
+┌─────────────────────────────────────────────────────────┐
+│  🎯 AI Recommendation                      Step 2.5    │
+│                                                         │
+│  Based on 31 signals, here's what to do:               │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  ✅ BUILD NOW                                   │   │
+│  │                                                 │   │
+│  │  Onboarding Friction Fix                        │   │
+│  │  Why: Highest frequency + highest frustration   │   │
+│  │  + fastest to implement                         │   │
+│  │                                                 │   │
+│  │  Proof: 25/31 users mentioned variants of this  │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  ⏳ PLAN FOR LATER                              │   │
+│  │  Mobile Performance — High effort, plan Q4      │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  ⚡ QUICK WIN THIS SPRINT                       │   │
+│  │  CSV Export — Low effort, closes 8 tickets      │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  ❌ IGNORE FOR NOW                              │   │
+│  │  Social Login — Low frequency, high effort      │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  [Generate Spec for #1 →]                             │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Screen 5: Evidence-Backed PRD ⭐ THE MONEY SCREEN
+```
+┌─────────────────────────────────────────────────────────┐
+│  📋 Product Spec                           Step 3 of 3 │
+│  Onboarding Friction Fix                               │
+│                                     [Copy] [Save] [PDF]│
+│                                                         │
+│  ── Problem Statement ─────────────────────────────    │
+│  New users abandon setup due to unclear steps,         │
+│  causing 60% drop-off before first value moment.       │
+│  Source: 25 customer signals                           │
+│                                                         │
+│  ── Target User ───────────────────────────────────    │
+│  New B2B customers, engineering teams 10-100 people    │
+│                                                         │
+│  ── User Stories ──────────────────────────────────    │
+│                                                         │
+│  ✓ As a new user, I want guided setup steps            │
+│    so I don't feel lost in the first 10 minutes        │
+│    📌 Evidence: "Confusing first-time setup" (5 users) │
+│                                                         │
+│  ✓ As an admin, I want to invite my team in            │
+│    one click during onboarding                         │
+│    📌 Evidence: "Setup took 2 days for my team" (3)   │
+│                                                         │
+│  ── Success Metrics ───────────────────────────────    │
+│  • Onboarding completion: 40% → 80%                   │
+│  • Time to first value: < 30 min                      │
+│  • Day-7 retention: +15%                              │
+│                                                         │
+│  ── Edge Cases ────────────────────────────────────    │
+│  • User exits mid-flow → save progress                │
+│  • SSO vs email signup → different flows              │
+│                                                         │
+│  ── Risks ─────────────────────────────────────────    │
+│  ⚠ Oversimplifying may frustrate power users          │
+│  ⚠ Different tiers need different onboarding          │
+│                                                         │
+│  ── Acceptance Criteria ───────────────────────────    │
+│  ✓ User completes setup in < 5 steps                  │
+│  ✓ Progress saved on exit                             │
+│  ✓ Mobile and desktop parity                          │
+│                                                         │
+│  Generated from: 25 tickets • 14 reviews • 9 notes    │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🛠️ Final Tech Stack Decision
+
+```
+Layer           Tool              Why
+──────────────────────────────────────────────────────
+Frontend    →   Next.js 15        Save analyses (Supabase need)
+Styling     →   Tailwind +        Fast + professional
+                shadcn/ui
+AI          →   Claude API        Best structured JSON + PRDs
+                sonnet-4-6
+Database    →   Supabase          Save analyses, revisit PRDs
+Deploy      →   Vercel            Free, 2 min
+Analytics   →   Novus.ai          Required + impress judges
+```
+
+**Friend sahi tha** — Supabase add karo. Agar judge puche "Can I save this?" → YES.
+
+---
+
+## 🧠 Claude API — 3 Calls (Revised)
+
+### Call 1: Theme Discovery + Evidence
+```javascript
+const clusterPrompt = `
+You are a senior PM analyzing customer feedback.
+
+Product: ${context}
+Feedback: ${rawInput}
+
+Return ONLY valid JSON:
+{
+  "total_analyzed": 31,
+  "themes": [
+    {
+      "rank": 1,
+      "name": "Onboarding Friction",
+      "opportunity_score": 9.2,
+      "frequency": 25,
+      "sentiment": "negative",
+      "impact": "high",
+      "effort": "low",
+      "is_quick_win": false,
+      "evidence": [
+        { "quote": "Takes forever to set up", "count": 12 },
+        { "quote": "I gave up twice", "count": 8 },
+        { "quote": "First time was confusing", "count": 5 }
+      ]
+    }
+  ],
+  "quick_wins": ["CSV Export"],
+  "ignore_now": ["Social Login"],
+  "executive_summary": "2 sentences max"
+}
+Opportunity Score = (Frequency × Impact) / Effort. Score 1-10.
+`
+```
+
+### Call 2: Decision Layer
+```javascript
+const decisionPrompt = `
+You are a PM making build vs delay vs ignore decisions.
+
+Themes: ${JSON.stringify(themes)}
+Product Context: ${context}
+
+Return ONLY valid JSON:
+{
+  "build_now": {
+    "theme": "Onboarding Friction",
+    "reasoning": "Highest frequency + frustration + fastest to ship",
+    "evidence_strength": "25 of 31 users mentioned this"
+  },
+  "plan_later": [
+    { "theme": "Mobile Performance", "reason": "High effort, plan Q4" }
+  ],
+  "quick_wins": [
+    { "theme": "CSV Export", "reason": "Low effort, closes 8 tickets" }
+  ],
+  "ignore": [
+    { "theme": "Social Login", "reason": "Low frequency, high effort" }
+  ]
+}
+`
+```
+
+### Call 3: Evidence-Backed PRD
+```javascript
+const prdPrompt = `
+You are a senior PM writing a PRD.
+Every user story MUST include evidence from actual quotes.
+
+Feature: ${selectedTheme.name}
+Evidence: ${JSON.stringify(selectedTheme.evidence)}
+Product: ${context}
+
+Return ONLY valid JSON:
+{
+  "title": "Onboarding Friction Fix",
+  "problem_statement": "...",
+  "target_user": "...",
+  "user_stories": [
+    {
+      "story": "As a new user, I want guided setup...",
+      "evidence_quote": "Takes forever to set up",
+      "evidence_count": 12
+    }
+  ],
+  "success_metrics": ["Completion: 40% → 80%"],
+  "edge_cases": ["User exits mid-flow → save progress"],
+  "risks": ["Oversimplifying frustrates power users"],
+  "acceptance_criteria": ["User completes in < 5 steps"],
+  "out_of_scope": ["Mobile onboarding"],
+  "sources_summary": "25 tickets, 14 reviews, 9 interviews"
+}
+`
+```
+
+---
+
+## 📊 Novus Events (Judge-Impressive Version)
+
+```javascript
+// Track the full funnel
+novus.track('session_started')
+
+novus.track('feedback_submitted', {
+  char_count: input.length,
+  has_context: !!context
+})
+
+novus.track('analysis_complete', {
+  themes_found: themes.length,
+  top_score: themes[0].opportunity_score,
+  top_theme: themes[0].name
+})
+
+novus.track('theme_clicked', {
+  theme_name: theme.name,
+  rank: theme.rank,
+  score: theme.opportunity_score
+})
+
+novus.track('decision_viewed', {
+  build_now: decision.build_now.theme
+})
+
+novus.track('prd_generated', {
+  theme: selectedTheme.name,
+  stories_count: prd.user_stories.length,
+  has_evidence: true  // ← yeh special hai
+})
+
+novus.track('prd_exported', {
+  format: 'copy' // or 'pdf' or 'saved'
+})
+```
+
+**Judges Novus mein dekhenge:**
+- Full funnel — input se PRD tak
+- Drop-off point (kahaan log chode?)
+- Most clicked theme
+- Export rate
+
+---
+
+## 📝 Submission Description (Copy-Paste Ready)
+
+```
+WHAT I BUILT:
+ProdSignal turns messy customer feedback into 
+evidence-backed product decisions and engineering-ready 
+specs in under 60 seconds.
+
+THE PROBLEM:
+PMs spend hours reading feedback, guessing at priorities, 
+and writing PRDs from memory. The result: roadmaps based 
+on the loudest voice, not the real signal.
+
+HOW IT WORKS:
+1. Paste any feedback (reviews, Slack, tickets, interviews)
+2. AI clusters themes with opportunity scores + real quotes
+3. AI makes explicit BUILD/DELAY/IGNORE decisions with proof
+4. One click generates an evidence-backed PRD where every 
+   user story links to actual customer quotes
+
+THE DIFFERENTIATOR:
+Not summaries. Not sentiment. Actual decisions with proof.
+Every recommendation is traceable to real customer words.
+
+BUILT WITH:
+Next.js + Tailwind + shadcn/ui + Claude API + 
+Supabase + Vercel + Novus.ai
+
+WHO IT'S FOR:
+PMs, founders, and product teams who are drowning in 
+feedback but starving for decisions.
+```
+
+---
+
+## ⏰ Revised Timeline
+
+```
+NOW              Bolt.new → paste scaffold prompt
++45 min          5 screens UI done
++1.5 hrs         Call 1 working (Themes + Evidence)
++2.5 hrs         Call 2 working (Decision Layer)
++3.5 hrs         Call 3 working (PRD with evidence links)
++4 hrs           Supabase: save analysis (30 min setup)
++4.5 hrs         Novus installed, 7 events firing
++5 hrs           Deploy Vercel
++5.5 hrs         Test with Notion G2 reviews (real data)
++6 hrs           Record Loom (90 seconds)
++6.5 hrs         Devpost submission form fill
++7 hrs           SUBMIT ✅ (before 9:30 PM IST)
+```
+
+---
+
+## 🎬 90-Second Demo Script (Final)
+
+```
+0:00-0:08  "PMs read hundreds of feedback items.
+            Still don't know what to build. ProdSignal fixes that."
+
+0:08-0:20  [LIVE] Paste real Notion G2 reviews into input
+
+0:20-0:40  [LIVE] Insights appear — 4 themes, evidence quotes,
+            opportunity scores
+            "Notice — every score is backed by actual quotes"
+
+0:40-0:55  [LIVE] Decision view — BUILD / DELAY / IGNORE
+            "This is the moment PMs usually spend a week reaching"
+
+0:55-1:15  [LIVE] Click Generate Spec
+            PRD appears with evidence-linked user stories
+            "Every story cites the customers who asked for it"
+
+1:15-1:25  [LIVE] Show Novus dashboard
+            "We can already see where PMs spend most time"
+
+1:25-1:30  URL appears: prodsignal.vercel.app
+            "Try it yourself. Right now."
+```
+
+---
+
+## Final Summary
+
+```
+Your friend said:          ✅ Agreed. Done.
+─────────────────────────────────────────────────
+Remove Roadmap screen  →   Removed
+Add Evidence Tracing   →   Added to every story
+Add Supabase           →   Added to stack
+Reposition as          →   "Evidence-backed decisions"
+  Decision System           not "AI PRD tool"
+5 screens max          →   Exactly 5 screens
+```
+
+**Bolt.new prompt ready hai — paste karte hain?** 🚀
+
+Ek cheez bata — abhi kitna time hai tere paas? Deadline 9:30 PM IST hai aaj.
+
+
+
+
+when i given these pasted these things:-
+INPUT PROCESSING OUTPUT ───────────────────────────────────────────────────── Customer feedback → → Themes (clustered) Slack messages → Claude API → Opportunity Score (1-10) Support tickets → (your prompts) → Recommended roadmap G2/Trustpilot URLs → → Effort vs Impact matrix how about this Yaar, let me be brutally honest with you. Analysis karte hain teeno ka: --- ## 🏆 Winning Potential Analysis | Criteria | Meeting Tracker | Knowledge Search | Feature Prioritizer | |---|---|---|---| | Product Thinking | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | | Originality | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | | Shippedness (1 day) | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | | Judge Relevance | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | | Avoids "generic AI" trap | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | --- ## 🎯 My Pick: Feature Request Prioritizer **Kyun yeh jeeta hai:** - Judges **PM hain** — yeh unka daily pain hai - "Themes + Opportunity Score + Roadmap" = **concrete output**, not just chat - Knowledge Search bahut generic lagta hai (Notion AI, ChatPDF already exist) - Meeting Tracker mein audio processing = technical complexity = bugs = demo fail risk --- ## 🔥 Feature Request Prioritizer — Complete Build Plan ### What Exactly You're Building
+INPUT                    PROCESSING              OUTPUT
+─────────────────────────────────────────────────────
+Customer feedback   →                      → Themes (clustered)
+Slack messages      →   Claude API         → Opportunity Score (1-10)
+Support tickets     →   (your prompts)     → Recommended roadmap
+G2/Trustpilot URLs  →                      → Effort vs Impact matrix
+--- ### Tech Stack
+Frontend    →  Bolt.new or v0.dev (fastest UI)
+AI Engine   →  Claude API (claude-sonnet-4-6)
+Backend     →  None needed — serverless via Vercel
+Analytics   →  Novus.ai (mandatory)
+Deploy      →  Vercel (free, instant)
+**Why no backend?** Claude API can be called from frontend directly for a hackathon. Ship fast. --- ### Step-by-Step Build Process --- #### STEP 1 — Setup (30 min)
+1. Go to bolt.new
+2. Prompt: "Build a feature request prioritizer tool 
+   for product managers. Input: paste text area for 
+   customer feedback. Output: themed cards with 
+   priority scores. Clean, minimal UI."
+3. Get Anthropic API key from console.anthropic.com
+4. Get Vercel account ready
+--- #### STEP 2 — Core Prompt Engineering (1 hour) Yeh sabse important part hai. Tera Claude prompt:
+You are a senior product manager analyzing customer feedback.
+
+Given this raw feedback:
+[USER_INPUT]
+
+Return a JSON with exactly this structure:
+{
+  "themes": [
+    {
+      "name": "Theme name",
+      "frequency": 85,
+      "sentiment": "negative",
+      "requests": ["specific request 1", "request 2"],
+      "opportunity_score": 8.5,
+      "effort": "medium",
+      "impact": "high",
+      "recommended_priority": 1,
+      "roadmap_quarter": "Q3 2026",
+      "sample_quotes": ["exact quote from feedback"]
+    }
+  ],
+  "quick_wins": ["feature A", "feature B"],
+  "avoid_now": ["feature C"],
+  "executive_summary": "2 line summary"
+}
+
+Opportunity Score = (Frequency × Impact) / Effort
+Score 1-10. Be specific. No generic answers.
+--- #### STEP 3 — UI Build (1.5 hours) **3 screens only:**
+Screen 1 — INPUT
+┌─────────────────────────────────────┐
+│  🎯 Feature Request Prioritizer     │
+│                                     │
+│  Paste your feedback below:         │
+│  ┌─────────────────────────────┐   │
+│  │ Customer reviews, Slack     │   │
+│  │ messages, support tickets   │   │
+│  │ ...                         │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│  [Analyze Now →]                    │
+└─────────────────────────────────────┘
+
+Screen 2 — LOADING
+┌─────────────────────────────────────┐
+│  🔍 Analyzing 47 pieces of          │
+│     feedback...                     │
+│  ████████░░░░ 67%                   │
+└─────────────────────────────────────┘
+
+Screen 3 — OUTPUT (the money screen)
+┌─────────────────────────────────────┐
+│ 📊 Executive Summary                │
+│ "Users want faster onboarding and   │
+│  better mobile experience most"     │
+├─────────────────────────────────────┤
+│ 🎯 TOP THEMES                       │
+│                                     │
+│ #1 Onboarding Speed    Score: 9.2   │
+│ ████████████████████░  High Impact  │
+│ Q3 2026 • Medium Effort             │
+│                                     │
+│ #2 Mobile Experience   Score: 8.1   │
+│ ████████████████░░░░░  High Impact  │
+│ Q4 2026 • High Effort               │
+├─────────────────────────────────────┤
+│ ⚡ Quick Wins    🚫 Avoid Now        │
+│ • Dark mode     • Desktop redesign  │
+│ • CSV export    • Social login      │
+├─────────────────────────────────────┤
+│ 📅 Recommended Roadmap              │
+│ Q3: Onboarding → Q4: Mobile        │
+└─────────────────────────────────────┘
+--- #### STEP 4 — Novus.ai Integration (30 min) **Track these specific events** — yeh judges ko impress karega:
+javascript
+// User pastes feedback
+novus.track('feedback_submitted', {
+  character_count: input.length,
+  feedback_type: 'mixed'
+})
+
+// Analysis complete
+novus.track('analysis_complete', {
+  themes_found: themes.length,
+  top_theme: themes[0].name,
+  opportunity_score: themes[0].opportunity_score
+})
+
+// User clicks a theme
+novus.track('theme_explored', {
+  theme_name: theme.name,
+  rank: theme.position
+})
+
+// User copies roadmap
+novus.track('roadmap_copied', {
+  quarters_planned: 2
+})
+**Why this matters:** Judges will see a Novus dashboard showing real user behavior — not just "installed but empty." Yeh "Shippedness" mein direct points hai. --- #### STEP 5 — Deploy (20 min)
+1. Vercel pe deploy karo (bolt.new se direct export)
+2. Environment variable add karo: ANTHROPIC_API_KEY
+3. Custom domain optional (vercel.app URL enough hai)
+4. Test karo with real feedback data
+--- #### STEP 6 — Demo Video Script (90 seconds)
+0:00-0:10  "PMs spend hours reading feedback. 
+            I built something that does it in 30 seconds."
+
+0:10-0:30  Paste real G2 reviews live on screen
+            (use Notion/Figma reviews — judges know these)
+
+0:30-1:00  Show output animating in —
+            themes, scores, roadmap
+
+1:00-1:20  Click on one theme, show the quotes
+            "See — real user voices behind each insight"
+
+1:20-1:30  Show Novus dashboard
+            "Already tracking how PMs actually use this"
+--- ### Sample Data to Test With Paste this to test your own app:
+"The onboarding takes forever, I gave up twice before 
+completing setup" - G2 Review
+
+"Mobile app crashes every time I switch between projects" 
+- Support ticket #4521
+
+"PLEASE add CSV export, I've asked 3 times" 
+- Slack #feedback
+
+"Love the product but my whole team is on mobile and 
+it's unusable" - Customer interview
+
+"Onboarding video helped but the actual steps are confusing"
+- NPS response
+
+"Why can't I export my data? This is basic functionality"
+- Twitter DM
+--- ### What Makes This WIN vs Generic AI Tools
+Generic "AI Feedback Tool":     YOUR Tool:
+─────────────────────────────────────────────
+"Here's a summary"          →   Opportunity Score 8.5/10
+"Users want X"              →   Q3 2026 Roadmap
+"Sentiment: negative"       →   Effort vs Impact matrix
+No structure                →   Actionable next step
+--- ### Timeline for Today
+Now → 2 PM      Build UI on Bolt.new
+2 PM → 4 PM     Claude API integration + prompt tuning  
+4 PM → 5 PM     Novus install + test tracking
+5 PM → 6 PM     Deploy on Vercel
+6 PM → 7 PM     Record demo video
+7 PM → 8 PM     Write submission description
+8 PM            SUBMIT (deadline 5 PM BST = 9:30 PM IST)
+
+
+
+
+
+--- Shuru karte hain? Bol — main abhi **Bolt.new ke liye exact first prompt** likh deta hoon jo copy-paste karke seedha UI mil jaye. 🚀 Yes. In fact, **the merged version is significantly stronger than either idea alone.** The mistake would be building: > Feature Request Prioritizer + PRD Writer as two separate features. Instead build: # ProductPilot AI ### "Turn customer feedback into an actionable PRD in 5 minutes." That's a complete workflow. --- ## Why this is stronger Current PM workflow: 1. Read feedback 2. Find patterns 3. Prioritize requests 4. Decide roadmap 5. Write PRD 6. Create user stories 7. Define success metrics Nobody likes doing steps 1–7 manually. Your product does all of them. That feels like: > "I uploaded feedback and got a ready-to-build spec." That's memorable. --- # What judges see Not: > AI PRD Writer (which sounds like another GPT wrapper) Not: > Feature Prioritizer (which sounds like analytics) But: > "AI Product Operating System" that converts raw customer feedback into execution-ready product specs. That directly targets PMs, which is the hackathon audience. --- # User Flow ### Screen 1 Landing Headline: > Turn customer feedback into roadmap decisions and PRDs in 5 minutes. CTA: > Start Analysis --- ### Screen 2 Input Paste: * Support tickets * Slack conversations * Feature requests * User interviews * Customer reviews or upload CSV. --- ### Screen 3 AI Insight Engine Shows: #### Themes Example: * Mobile performance * Onboarding confusion * Missing notifications #### Evidence Customer quotes. #### Frequency How often mentioned. #### Severity Pain score. --- ### Screen 4 Opportunity Scoring Shows: | Theme | Impact | Frequency | Priority | | ------------- | ------ | --------- | -------- | | Onboarding | High | High | #1 | | Notifications | Medium | High | #2 | This is the PM magic moment. --- ### Screen 5 Roadmap Recommendation AI generates: ### Build First Onboarding improvements Why: * Highest frequency * Highest frustration * Fast implementation --- ### Screen 6 Generate PRD Click: > Generate Product Spec --- ### Screen 7 Generated PRD Sections: #### Problem Statement #### User Persona #### Goals #### User Stories #### Acceptance Criteria #### Success Metrics #### Edge Cases #### Risks #### Rollout Plan #### KPI Tracking This is where judges say: > "Okay, this is actually useful." --- # This is your 90-second demo ### 0-15 sec "We collected 500 support tickets." --- ### 15-35 sec Upload feedback. --- ### 35-50 sec AI identifies patterns. --- ### 50-65 sec AI prioritizes roadmap. --- ### 65-85 sec AI generates full PRD. --- ### 85-90 sec Show Novus analytics. Done. --- # Why this scores high ## Product Thinking Very high. PMs spend hours doing this manually. --- ## Craft & Execution Simple enough to polish. --- ## Originality Higher than: * AI chatbot * AI note taker * AI assistant because it's workflow-specific. --- ## Shippedness Very high. Judges can upload feedback and get a result immediately. --- # Tech Stack As a solo builder, I would use: ### Frontend * Next.js 15 * Tailwind * shadcn/ui ### Database * Supabase ### AI * Claude Sonnet 4 Claude is excellent at PRDs and structured reasoning. ### Deployment * Vercel ### Analytics * Novus.ai ### File Parsing * PDF.js * PapaParse --- # AI Pipeline Don't use one giant prompt. Use 4 steps. ### Step 1 Feedback Clustering Input: 500 feedback entries Output: Themes --- ### Step 2 Opportunity Scoring Output: Frequency Severity Business Impact --- ### Step 3 Roadmap Generator Output: Priority order --- ### Step 4 PRD Generator Output: Full spec This produces much better results. --- # Novus Events Track: ### feedback_uploaded ### insights_generated ### roadmap_created ### prd_generated ### prd_exported ### project_shared Most hackathon entries will barely install Novus. You'll actually demonstrate meaningful product analytics. --- # One thing I'd add The killer differentiator: ### "Evidence-backed PRD" Every user story links back to actual customer feedback. Example: **User Story** > As a user, I want push notifications. **Evidence** > "I keep missing important updates." (23 users mentioned similar issues) This makes the PRD trustworthy instead of generic AI output. --- If I were judging 1300 entries, I'd rank the concepts roughly: 1. **Feedback → Prioritization → PRD Generator (your merged idea)** → 9.5/10 2. Feature Prioritizer only → 8.5/10 3. PRD Writer only → 7.5/10 4. Meeting-to-Decision Tracker → 7/10 5. Personal Knowledge Search → 4/10 The merged workflow is the one that feels most like a **real product that a PM could start using tomorrow**, which aligns very closely with the judging criteria around Product Thinking, Craft, Originality, and Shippedness.
+
+amd also pasted this Yaar, YES merge karo! Yeh combination actually ek coherent product banta hai. Dekh:
+
+💡 The Merged Product: "ShipReady"
+
+From customer chaos to shipped spec — in 60 seconds
+
+The Flow Logic
+
+STEP 1                    STEP 2                    STEP 3
+─────────────────────────────────────────────────────────────
+Paste raw feedback   →   AI prioritizes it    →   AI writes PRD
+(customer reviews,        (themes, scores,         (user stories,
+ slack msgs, tickets)      roadmap quarter)          success metrics,
+                                                     edge cases)
+                                                     
+"What do users want?"  "Which to build first?"  "How to build it?"
+
+Yeh generic nahi hai. Yeh ek complete PM workflow hai — input se output tak.
+
+🏗️ Complete Product Blueprint
+
+Name: ShipReady
+
+Tagline: Turn customer noise into your next sprint — in 60 seconds
+
+5 Screens Only
+
+┌─────────────────────────────────────────────────────────┐
+│  SCREEN 1: LANDING                                      │
+│                                                         │
+│     🚀 ShipReady                                        │
+│                                                         │
+│  "Your customers are telling you what to build.         │
+│   You're just not listening fast enough."               │
+│                                                         │
+│  Step 1 → Paste feedback                               │
+│  Step 2 → Get priorities                               │
+│  Step 3 → Get your PRD                                 │
+│                                                         │
+│  [Start for Free →]        [See Example Output]        │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│  SCREEN 2: INPUT                                        │
+│                                                         │
+│  Paste your customer feedback                           │
+│  ┌───────────────────────────────────────────────┐     │
+│  │ Paste anything:                               │     │
+│  │ • G2/Trustpilot reviews                      │     │
+│  │ • Slack #feedback messages                   │     │
+│  │ • Support tickets                            │     │
+│  │ • User interview notes                       │     │
+│  │ • NPS responses                              │     │
+│  └───────────────────────────────────────────────┘     │
+│                                                         │
+│  Product context (optional):                            │
+│  ┌───────────────────────────────────────────────┐     │
+│  │ e.g. "B2B SaaS for HR teams, 50-200 employees"│     │
+│  └───────────────────────────────────────────────┘     │
+│                                                         │
+│  [Analyze & Prioritize →]                              │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│  SCREEN 3: PRIORITIZATION (The "wow" screen)            │
+│                                                         │
+│  📊 Found 4 themes in 23 feedback items                 │
+│                                                         │
+│  ┌─────────────────────────────────────────────┐       │
+│  │ #1  Onboarding Speed        Score: 9.2  🔥  │       │
+│  │     23 mentions • High Impact • Low Effort  │       │
+│  │     "Takes forever to set up" ×12           │       │
+│  │     → Recommended: Q3 2026                  │       │
+│  │     [Write PRD for this →]                  │       │
+│  ├─────────────────────────────────────────────┤       │
+│  │ #2  Mobile Experience       Score: 8.1      │       │
+│  │     18 mentions • High Impact • High Effort │       │
+│  │     → Recommended: Q4 2026                  │       │
+│  │     [Write PRD for this →]                  │       │
+│  ├─────────────────────────────────────────────┤       │
+│  │ #3  CSV Export              Score: 6.4      │       │
+│  │     8 mentions • Med Impact • Low Effort    │       │
+│  │     → Quick Win: Sprint 1                   │       │
+│  │     [Write PRD for this →]                  │       │
+│  └─────────────────────────────────────────────┘       │
+│                                                         │
+│  ⚡ Quick Wins    🚫 Don't Build Yet                    │
+│  • Dark mode     • Social login                        │
+│  • CSV export    • Desktop redesign                    │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│  SCREEN 4: PRD OUTPUT (The "money" screen)              │
+│                                                         │
+│  📋 PRD: Onboarding Speed Improvement                   │
+│                                                         │
+│  ── Overview ──────────────────────────────────────    │
+│  Problem: Users abandon setup due to complexity        │
+│  User: New B2B customers, 50-200 employee companies    │
+│  Goal: Reduce time-to-value from 2 days to 2 hours     │
+│                                                         │
+│  ── User Stories ──────────────────────────────────    │
+│  ✓ As a new user, I want guided setup so I don't       │
+│    feel lost in the first 10 minutes                   │
+│  ✓ As an admin, I want to invite my team in one        │
+│    click during onboarding                             │
+│                                                         │
+│  ── Success Metrics ───────────────────────────────    │
+│  • Setup completion rate: 40% → 80%                   │
+│  • Time to first value: < 30 minutes                  │
+│  • Day-7 retention: +15%                              │
+│                                                         │
+│  ── Edge Cases ────────────────────────────────────    │
+│  • User leaves mid-onboarding → save progress         │
+│  • SSO vs email signup flow difference                │
+│  • Mobile vs desktop onboarding parity                │
+│                                                         │
+│  ── Risks ─────────────────────────────────────────    │
+│  ⚠ Risk: Over-simplifying may reduce power users      │
+│  ⚠ Risk: Different flows for different plan tiers     │
+│                                                         │
+│  [Copy PRD] [Export PDF] [Start Another →]            │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│  SCREEN 5: ROADMAP VIEW (Bonus, makes it complete)      │
+│                                                         │
+│  📅 Your Recommended Roadmap                            │
+│                                                         │
+│  NOW (Sprint 1-2)                                      │
+│  ├── ⚡ CSV Export (Quick Win)                         │
+│  └── ⚡ Dark Mode (Quick Win)                          │
+│                                                         │
+│  Q3 2026                                               │
+│  └── 🔥 Onboarding Speed (PRD Ready ✓)               │
+│                                                         │
+│  Q4 2026                                               │
+│  └── 📱 Mobile Experience                              │
+│                                                         │
+│  LATER / REVISIT                                       │
+│  └── 🚫 Social Login, Desktop Redesign               │
+│                                                         │
+│  [Export Roadmap] [Share Link]                        │
+└─────────────────────────────────────────────────────────┘
+
+🛠️ Tech Stack (Fastest to Ship)
+
+Layer           Tool                Why
+─────────────────────────────────────────────────────
+UI Builder    → Bolt.new           Fastest, React output
+AI Engine     → Claude API         Best for structured JSON
+              (claude-sonnet-4-6)  + long PRD writing
+Styling       → Tailwind CSS       Auto in Bolt.new
+Deploy        → Vercel             Free, 2 min deploy
+Analytics     → Novus.ai           Required + impress judges
+PDF Export    → browser print()    No library needed
+
+No backend needed. Claude API direct from frontend. Hackathon ke liye sufficient hai.
+
+🧠 The Two Claude API Calls
+
+Call 1 — Prioritization
+
+const prioritizationPrompt = `
+You are a senior product manager analyzing customer feedback.
+
+Product Context: ${productContext}
+
+Raw Feedback:
+${userFeedback}
+
+Return ONLY valid JSON, no explanation:
+{
+  "total_items_analyzed": 23,
+  "themes": [
+    {
+      "rank": 1,
+      "name": "Onboarding Speed",
+      "mention_count": 12,
+      "sentiment": "negative",
+      "impact": "high",
+      "effort": "low",
+      "opportunity_score": 9.2,
+      "recommended_quarter": "Q3 2026",
+      "sample_quotes": [
+        "Takes forever to set up",
+        "Gave up during onboarding twice"
+      ],
+      "is_quick_win": false
+    }
+  ],
+  "quick_wins": ["CSV Export", "Dark Mode"],
+  "avoid_now": ["Social Login", "Desktop Redesign"],
+  "executive_summary": "Users are blocked at onboarding and frustrated by mobile experience. Fix these two things and retention will improve significantly."
+}
+`
+
+Call 2 — PRD Generation
+
+const prdPrompt = `
+You are a senior product manager writing a PRD.
+
+Feature to spec: ${selectedTheme.name}
+Product Context: ${productContext}
+User Pain (from feedback): ${selectedTheme.sample_quotes.join(', ')}
+Opportunity Score: ${selectedTheme.opportunity_score}
+
+Write a complete PRD. Return ONLY valid JSON:
+{
+  "title": "Onboarding Speed Improvement",
+  "problem_statement": "New users abandon setup...",
+  "target_user": "B2B SaaS customers, 50-200 employees",
+  "goal": "Reduce time-to-value from 2 days to 2 hours",
+  "user_stories": [
+    "As a new user, I want guided setup so I don't feel lost",
+    "As an admin, I want to invite my team in one click"
+  ],
+  "success_metrics": [
+    "Setup completion rate: 40% → 80%",
+    "Time to first value: < 30 minutes",
+    "Day-7 retention: +15%"
+  ],
+  "edge_cases": [
+    "User leaves mid-onboarding → save progress",
+    "SSO vs email signup flow difference"
+  ],
+  "risks": [
+    "Over-simplifying may reduce power user flexibility",
+    "Different flows needed for different plan tiers"
+  ],
+  "out_of_scope": [
+    "Mobile onboarding (separate PRD)",
+    "Enterprise SSO (Q4 dependency)"
+  ]
+}
+`
+
+📊 Novus.ai Events to Track
+
+// Landing page
+novus.track('page_viewed', { page: 'landing' })
+
+// User starts
+novus.track('analysis_started', {
+  feedback_length: input.length,
+  has_product_context: !!context
+})
+
+// Prioritization done
+novus.track('prioritization_complete', {
+  themes_found: themes.length,
+  top_theme: themes[0].name,
+  top_score: themes[0].opportunity_score
+})
+
+// User picks a theme for PRD
+novus.track('prd_requested', {
+  theme_name: theme.name,
+  theme_rank: theme.rank,
+  opportunity_score: theme.opportunity_score
+})
+
+// PRD generated
+novus.track('prd_generated', {
+  theme_name: theme.name,
+  user_stories_count: prd.user_stories.length
+})
+
+// User copies/exports
+novus.track('prd_exported', {
+  format: 'copy' // or 'pdf'
+})
+
+Judges Novus dashboard mein dekhenge:
+
+Kitne log analyze kar rahe hain
+
+Kaunsa theme sabse zyada PRD banwata hai
+
+Kahaan users drop off kar rahe hain
+
+⏰ Today's Timeline (9:30 PM IST = Deadline)
+
+TIME          TASK                              TOOL
+──────────────────────────────────────────────────────
+Now           Open bolt.new                    Browser
++30 min       UI scaffold ready                Bolt.new
++1.5 hrs      Call 1 working (Prioritizer)     Claude API
++2.5 hrs      Call 2 working (PRD Writer)      Claude API
++3 hrs        All 5 screens done               Bolt.new
++3.5 hrs      Novus installed + events live    Novus docs
++4 hrs        Deploy on Vercel                 Vercel
++4.5 hrs      Test with real feedback          Browser
++5 hrs        Record 90 sec demo video         Loom
++5.5 hrs      Write submission description     Devpost
++6 hrs        SUBMIT ✅                         Devpost
+
+🎬 90-Second Demo Script
+
+0:00-0:10  "PMs drown in feedback but starve for decisions.
+            ShipReady fixes that."
+
+0:10-0:25  Paste real G2 reviews live
+           (use Notion's own reviews — judges know Notion)
+
+0:25-0:50  Prioritization appears — 4 themes, scores,
+           "See — Onboarding is the #1 pain, score 9.2"
+
+0:50-1:10  Click "Write PRD" on top theme
+           PRD appears — user stories, metrics, risks
+
+1:10-1:25  Show roadmap view
+           "Now you know WHAT to build, WHEN, and HOW"
+
+1:25-1:30  Flash Novus dashboard
+           "Already tracking real product decisions"
+
+Why This WINS
+
+Generic submissions:         ShipReady:
+────────────────────────────────────────────────
+"AI feedback summarizer" →  Opportunity Score 9.2
+"AI chatbot for PMs"     →  Full PRD in 30 seconds
+"AI productivity tool"   →  Complete roadmap output
+No clear output          →  3 concrete deliverables
+No analytics             →  Novus tracking 6 events
+
+Bolt.new pe ja aur yeh prompt paste kar pehle:
+
+Build a web app called ShipReady. 
+Clean, minimal UI. Dark mode. 5 screens:
+1. Landing page with headline and CTA
+2. Feedback input textarea + optional product context field
+3. Prioritization results with theme cards showing scores
+4. PRD document view with sections
+5. Roadmap timeline view
+
+Use React + Tailwind. Professional SaaS look.
+No backend needed. Placeholder buttons for now.
+
+Shuru kar — main har step pe saath hoon! 🚀
+
+
+so thinking for now how should i do???
