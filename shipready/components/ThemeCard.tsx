@@ -27,7 +27,7 @@ export default function ThemeCard({ theme }: { theme: Theme }) {
 
   function handleGenerateSpec() {
     localStorage.setItem('shipready_selected_theme', JSON.stringify(theme))
-    router.push('/decision')
+    router.push('/spec')
   }
 
   const isTop = theme.rank === 1

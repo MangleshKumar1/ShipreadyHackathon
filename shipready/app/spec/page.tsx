@@ -46,17 +46,8 @@ export default function SpecPage() {
 
   useEffect(() => {
     async function load() {
-      // Use cached PRD if available
-      const cached = localStorage.getItem('shipready_prd')
-      if (cached) {
-        try {
-          setPrd(JSON.parse(cached))
-          setLoading(false)
-          return
-        } catch {
-          localStorage.removeItem('shipready_prd')
-        }
-      }
+      // Always clear cached PRD — generate fresh for whichever theme was selected
+      localStorage.removeItem('shipready_prd')
 
       const rawTheme = localStorage.getItem('shipready_selected_theme')
       if (!rawTheme) {
@@ -87,7 +78,6 @@ export default function SpecPage() {
           throw new Error((body as { error?: string }).error || `Server error ${res.status}`)
         }
         const data: PRDData = await res.json()
-        localStorage.setItem('shipready_prd', JSON.stringify(data))
         setPrd(data)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'PRD generation failed. Please try again.')

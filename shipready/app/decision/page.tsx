@@ -6,6 +6,17 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import DecisionCard from '@/components/DecisionCard'
 
+interface Theme {
+  rank: number
+  name: string
+  opportunity_score: number
+  sentiment: string
+  impact: string
+  effort: string
+  is_quick_win: boolean
+  evidence: { quote: string; count: number }[]
+}
+
 interface Decisions {
   build_now: { theme: string; reasoning: string; evidence_strength: string }
   plan_later: { theme: string; reason: string }[]
@@ -15,12 +26,14 @@ interface Decisions {
 
 interface AnalysisData {
   total_analyzed: number
+  themes: Theme[]
   decisions: Decisions
 }
 
 export default function DecisionPage() {
   const router = useRouter()
   const [analysis, setAnalysis] = useState<AnalysisData | null>(null)
+  const [selectedTheme, setSelectedTheme] = useState<Theme | null>(null)
 
   useEffect(() => {
     const saved = localStorage.getItem('shipready_analysis')
@@ -31,13 +44,15 @@ export default function DecisionPage() {
         // corrupt data — ignore
       }
     }
+    const savedTheme = localStorage.getItem('shipready_selected_theme')
+    if (savedTheme) {
+      try {
+        setSelectedTheme(JSON.parse(savedTheme))
+      } catch {
+        // corrupt data — ignore
+      }
+    }
   }, [])
-
-  function handleGenerateSpec() {
-    if (!analysis) return
-    localStorage.setItem('shipready_build_now', JSON.stringify(analysis.decisions.build_now))
-    router.push('/spec')
-  }
 
   if (!analysis) {
     return (
@@ -54,7 +69,62 @@ export default function DecisionPage() {
     )
   }
 
-  const { decisions } = analysis
+  const { decisions, themes } = analysis
+
+  // Determine the active build now theme name
+  const buildNowThemeName = selectedTheme?.name || decisions.build_now.theme
+
+  // Find reasoning and evidence strength for the active build now theme
+  let reasoning = decisions.build_now.reasoning
+  let evidenceStrength = decisions.build_now.evidence_strength
+
+  if (selectedTheme && selectedTheme.name !== decisions.build_now.theme) {
+    const planLaterItem = decisions.plan_later.find((item) => item.theme === selectedTheme.name)
+    const quickWinItem = decisions.quick_wins.find((item) => item.theme === selectedTheme.name)
+    const lowSignalItem = decisions.low_signal.find((item) => item.theme === selectedTheme.name)
+
+    reasoning =
+      planLaterItem?.reason ||
+      quickWinItem?.reason ||
+      lowSignalItem?.reason ||
+      'Selected by user for immediate implementation.'
+
+    const totalQuotesCount = selectedTheme.evidence?.reduce((sum, e) => sum + e.count, 0) || 0
+    evidenceStrength = `${totalQuotesCount} user mentions in feedback`
+  }
+
+  // Filter other lists to avoid duplicates
+  const planLaterList = decisions.plan_later.filter((item) => item.theme !== buildNowThemeName)
+  const quickWinsList = decisions.quick_wins.filter((item) => item.theme !== buildNowThemeName)
+  const lowSignalList = decisions.low_signal.filter((item) => item.theme !== buildNowThemeName)
+
+  // Demote original build now theme to plan later if user selected a different theme
+  if (buildNowThemeName !== decisions.build_now.theme) {
+    const originalThemeFull = themes.find((t) => t.name === decisions.build_now.theme)
+    const scoreText = originalThemeFull ? ` (Score: ${originalThemeFull.opportunity_score}/10)` : ''
+    planLaterList.unshift({
+      theme: decisions.build_now.theme,
+      reason: `AI recommended Build Now${scoreText}, postponed by user choice.`,
+    })
+  }
+
+  function handleGenerateSpec() {
+    if (!analysis) return
+    const { themes } = analysis
+    // Find the full theme object (with evidence) for the active build now theme
+    const fullTheme = themes.find((t) => t.name === buildNowThemeName) ?? {
+      name: buildNowThemeName,
+      rank: 1,
+      opportunity_score: 9,
+      sentiment: 'negative',
+      impact: 'high',
+      effort: 'low',
+      is_quick_win: false,
+      evidence: [],
+    }
+    localStorage.setItem('shipready_selected_theme', JSON.stringify(fullTheme))
+    router.push('/spec')
+  }
 
   return (
     <main className="min-h-screen bg-gray-50 px-4 py-10">
@@ -80,17 +150,17 @@ export default function DecisionPage() {
         <div className="space-y-3">
           <DecisionCard
             type="build_now"
-            theme={decisions.build_now.theme}
-            reasoning={decisions.build_now.reasoning}
-            evidenceStrength={decisions.build_now.evidence_strength}
+            theme={buildNowThemeName}
+            reasoning={reasoning}
+            evidenceStrength={evidenceStrength}
           />
-          {decisions.plan_later.map((item) => (
+          {planLaterList.map((item) => (
             <DecisionCard key={item.theme} type="plan_later" theme={item.theme} reason={item.reason} />
           ))}
-          {decisions.quick_wins.map((item) => (
+          {quickWinsList.map((item) => (
             <DecisionCard key={item.theme} type="quick_win" theme={item.theme} reason={item.reason} />
           ))}
-          {decisions.low_signal.map((item) => (
+          {lowSignalList.map((item) => (
             <DecisionCard key={item.theme} type="low_signal" theme={item.theme} reason={item.reason} />
           ))}
         </div>
@@ -101,10 +171,11 @@ export default function DecisionPage() {
           className="w-full bg-black text-white hover:bg-gray-800"
           onClick={handleGenerateSpec}
         >
-          Generate Spec for: {decisions.build_now.theme} →
+          Generate Spec for: {buildNowThemeName} →
         </Button>
 
       </div>
     </main>
   )
 }
+
