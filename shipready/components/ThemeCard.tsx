@@ -26,6 +26,15 @@ export default function ThemeCard({ theme }: { theme: Theme }) {
   const router = useRouter()
 
   function handleGenerateSpec() {
+    ;(window as any).pendo?.track('theme_clicked', {
+      theme_name: theme.name,
+      rank: theme.rank,
+      opportunity_score: theme.opportunity_score,
+      impact: theme.impact,
+      effort: theme.effort,
+      is_quick_win: theme.is_quick_win,
+    })
+
     localStorage.setItem('shipready_selected_theme', JSON.stringify(theme))
     router.push('/spec')
   }

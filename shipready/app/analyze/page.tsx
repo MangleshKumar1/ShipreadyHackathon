@@ -25,6 +25,12 @@ export default function AnalyzePage() {
     if (!feedback.trim()) return
     setLoading(true)
     setError('')
+
+    ;(window as any).pendo?.track('feedback_submitted', {
+      char_count: feedback.trim().length,
+      has_context: Boolean(context.trim()),
+    })
+
     try {
       const res = await fetch('/api/analyze', {
         method: 'POST',
@@ -33,6 +39,12 @@ export default function AnalyzePage() {
       })
       if (!res.ok) throw new Error(`Server error ${res.status}`)
       const data = await res.json()
+
+      ;(window as any).pendo?.track('analysis_complete', {
+        themes_found: data.themes?.length || 0,
+        top_score: Math.max(...(data.themes?.map((t: any) => t.opportunity_score) || [0])),
+      })
+
       localStorage.setItem('shipready_input', JSON.stringify({ feedback, context }))
       localStorage.setItem('shipready_context', context.trim())
       localStorage.setItem('shipready_analysis', JSON.stringify(data))

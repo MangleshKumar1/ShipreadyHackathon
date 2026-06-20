@@ -79,6 +79,14 @@ export default function SpecPage() {
         }
         const data: PRDData = await res.json()
         setPrd(data)
+
+        ;(window as any).pendo?.track('prd_generated', {
+          theme: data.title || '',
+          stories_count: data.user_stories?.length || 0,
+          metrics_count: data.success_metrics?.length || 0,
+          risks_count: data.risks?.length || 0,
+          acceptance_criteria_count: data.acceptance_criteria?.length || 0,
+        })
       } catch (err) {
         setError(err instanceof Error ? err.message : 'PRD generation failed. Please try again.')
       } finally {
@@ -92,6 +100,13 @@ export default function SpecPage() {
   function handleCopy() {
     if (!prd) return
     navigator.clipboard.writeText(prdToPlainText(prd))
+
+    ;(window as any).pendo?.track('prd_exported', {
+      format: 'text',
+      theme: prd.title || '',
+      stories_count: prd.user_stories?.length || 0,
+    })
+
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
