@@ -39,7 +39,16 @@ export default function DecisionPage() {
     const saved = localStorage.getItem('shipready_analysis')
     if (saved) {
       try {
-        setAnalysis(JSON.parse(saved))
+        const parsed = JSON.parse(saved)
+        setAnalysis(parsed)
+
+        ;(window as any).pendo?.track('decision_viewed', {
+          build_now_theme: parsed.decisions?.build_now?.theme || '',
+          total_analyzed: parsed.total_analyzed || 0,
+          plan_later_count: parsed.decisions?.plan_later?.length || 0,
+          quick_wins_count: parsed.decisions?.quick_wins?.length || 0,
+          low_signal_count: parsed.decisions?.low_signal?.length || 0,
+        })
       } catch {
         // corrupt data — ignore
       }

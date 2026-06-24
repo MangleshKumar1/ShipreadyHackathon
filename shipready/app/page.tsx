@@ -1,7 +1,10 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+
+let sessionTracked = false
 
 const EXAMPLE_FEEDBACK = `The onboarding takes forever, I gave up twice
 Mobile app crashes every time I switch projects
@@ -11,6 +14,16 @@ Why cant I export data? Basic functionality`
 
 export default function Home() {
   const router = useRouter()
+
+  useEffect(() => {
+    if (!sessionTracked) {
+      sessionTracked = true
+      ;(window as any).pendo?.track('session_started', {
+        referrer: document.referrer,
+        timestamp: new Date().toISOString(),
+      })
+    }
+  }, [])
 
   function handleSeeExample() {
     localStorage.setItem('shipready_feedback', EXAMPLE_FEEDBACK)
